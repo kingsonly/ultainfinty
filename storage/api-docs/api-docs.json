@@ -1,0 +1,188 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "this is just a test project",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/article": {
+            "post": {
+                "tags": [
+                    "article"
+                ],
+                "summary": "get all article",
+                "description": "this route is responsible for fetching all artiles in apagination batch of 10 articles in each batch",
+                "operationId": "getARTICLE",
+                "responses": {
+                    "200": {
+                        "description": "Successfully fetched articles",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "could not fetch any Article at this moment"
+                    }
+                }
+            }
+        },
+        "/api/article/{id}": {
+            "get": {
+                "tags": [
+                    "singleArticle"
+                ],
+                "summary": "get all article",
+                "description": "This route is responsible  for the fetching of a single article inclusive with all associated tags and comments",
+                "operationId": "singleArticle",
+                "responses": {
+                    "201": {
+                        "description": "Successfully saved number of views and  fetched single articles",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "could not update number of views at this moment , but would still fetch article"
+                    }
+                }
+            }
+        },
+        "/api/article/{id}/comment": {
+            "get": {
+                "tags": [
+                    "singleArticleComment"
+                ],
+                "summary": "get article comment",
+                "description": "This route is responsible  for the fetching of a single article comments",
+                "operationId": "singleArticleComment",
+                "responses": {
+                    "200": {
+                        "description": "Successfully fetched all comments",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "could not fetch comments"
+                    }
+                }
+            }
+        },
+        "/api/article/{id}/like": {
+            "get": {
+                "tags": [
+                    "singleArticleCommentLikes"
+                ],
+                "summary": "get article likes",
+                "description": "This route is responsible for the fetching of a single article likes",
+                "operationId": "singleArticleLikes",
+                "responses": {
+                    "200": {
+                        "description": "Successfully fetched likes",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "could not fetch likes"
+                    }
+                }
+            }
+        },
+        "/api/article/{id}/view": {
+            "get": {
+                "tags": [
+                    "singleArticleCommentViews"
+                ],
+                "summary": "get article views",
+                "description": "This route is responsible for the fetching of a single article views",
+                "operationId": "singleArticleViews",
+                "responses": {
+                    "200": {
+                        "description": "Successfully fetched views",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "could not fetch views"
+                    }
+                }
+            }
+        },
+        "/api/article/{id}/comment/create": {
+            "post": {
+                "tags": [
+                    "newComment"
+                ],
+                "summary": "create a new comment",
+                "description": "This route is responsible for the creation of a new comment for a perticlar article.",
+                "operationId": "newComment",
+                "parameters": [
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated likes",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "could not update likes"
+                    }
+                }
+            }
+        },
+        "/api/article/{id}/like/increment": {
+            "get": {
+                "tags": [
+                    "updateSingleArticleLikes"
+                ],
+                "summary": "update the likes of a single article",
+                "description": "This route is responsible for the updating of a single article likes",
+                "operationId": "updateSingleArticleLikes",
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated likes",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "could not update likes"
+                    }
+                }
+            }
+        }
+    }
+}
