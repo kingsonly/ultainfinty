@@ -74,13 +74,18 @@ class ArticleController extends Controller
     function view($id){
         // when this endpoint is fetched the number of views is automatically increased
         $getASingleArticle =  Article::where('id',$id)->with("comment","tag")->first();
-        $getASingleArticle->views += 1;
+        if(!empty($getASingleArticle)){
+            $getASingleArticle->views += 1;
         
-        if($getASingleArticle->save()){
-            return response()->json(['status'=>'success', 'message'=>'Article fetched, and view counter updated ', 'data'=>$getASingleArticle],201);
-        }else{
-            return response()->json(['status'=>'success', 'message'=>'Article fetched but could not update views', 'data'=>$getASingleArticle],200);
+            if($getASingleArticle->save()){
+                return response()->json(['status'=>'success', 'message'=>'Article fetched, and view counter updated ', 'data'=>$getASingleArticle],201);
+            }else{
+                return response()->json(['status'=>'success', 'message'=>'Article fetched but could not update views', 'data'=>$getASingleArticle],200);
+            }
+            
         }
+        return response()->json(['status'=>'error', 'message'=>'Sorry there is no article available at the moment.'],400);
+        
         
     }
 
