@@ -45,7 +45,7 @@ class ArticleController extends Controller
             $page = 1;
         }
         $getAllArticles =  Article::with("comment","tag")->orderBy('id', 'DESC')->paginate($perpage)->toarray();
-        if(!empty($getAllArticles)){
+        if(!empty($getAllArticles['data'])){
             $totalpages = ceil($getAllArticles["total"]/$perpage);
             return response()->json(['status'=>'success', 'message'=>'Article fetched with pagination', 'data'=>$getAllArticles,  'totalpages'=>$totalpages, 'perpage'=>$perpage],200);
         }
