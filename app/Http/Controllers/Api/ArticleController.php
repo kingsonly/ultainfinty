@@ -61,13 +61,9 @@ class ArticleController extends Controller
           * summary="get all article",
           * description="This route is responsible  for the fetching of a single article inclusive with all associated tags and comments",
           * @OA\Property(property="id", type="integer"),
-          *      @OA\Response(
-          *          response=201,
-          *          description="Successfully saved number of views and  fetched single articles",
-          *          @OA\JsonContent()
-          *       ),
-          *    
-          *      @OA\Response(response=200, description="could not update number of views at this moment , but would still fetch article"),
+          * @OA\Response(response=201,description="Successfully saved number of views and  fetched single articles",@OA\JsonContent()),
+          *  @OA\Response(response=200, description="could not update number of views at this moment , but would still fetch article"),
+          *  @OA\Response(response=400, description="there is no article available at the moment."),
           * )
           */
        
