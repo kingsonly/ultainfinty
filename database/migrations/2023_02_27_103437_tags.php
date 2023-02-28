@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('article_id');
             $table->string('name');
+            $table->string('link');
             $table->timestamps();
         });
     }

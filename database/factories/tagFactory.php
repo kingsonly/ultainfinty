@@ -19,6 +19,8 @@ class tagFactory extends Factory
         return [
             //
             "name" => $this->faker->sentence($nbWords = 1, $variableNbWords = true),
+            "link" => $this->faker->url(),
+
         ];
     }
 }
