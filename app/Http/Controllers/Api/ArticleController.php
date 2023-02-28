@@ -55,7 +55,7 @@ class ArticleController extends Controller
 
     /**
           * @OA\Get(
-          * path="/api/article/{id}/view",
+          * path="/api/article/{id}",
           * operationId="singleArticle",
           * tags={"singleArticle"},
           * summary="get all article",
